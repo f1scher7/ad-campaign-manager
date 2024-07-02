@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.futurum.adcampaignmanager.utils.JwtUtil.generateToken;
+import static com.futurum.adcampaignmanager.utils.ResponseUtil.createErrorResponse;
+
 @RestController
-@RequestMapping("/auth/login")
+@RequestMapping("/api/auth/login")
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -34,8 +37,7 @@ public class LoginController {
         try {
             String username = loginRequest.get("username");
             String password = loginRequest.get("password");
-            System.out.println(username);
-            System.out.println(password);
+
             Authentication authentication = this.authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password)
             );
@@ -43,14 +45,16 @@ public class LoginController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             User user = (User) authentication.getPrincipal();
+            String jwtToken = generateToken(authentication);
 
             Map<String, String> response = new HashMap<>();
             response.put("username", user.getUsername());
             response.put("role", String.valueOf(user.getRole()));
+            response.put("jwtToken", jwtToken);
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            return createErrorResponse(HttpStatus.UNAUTHORIZED, "loginError", "Invalid username or password");
         }
     }
 
