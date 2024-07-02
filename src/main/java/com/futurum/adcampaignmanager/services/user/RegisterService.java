@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 import static com.futurum.adcampaignmanager.utils.UserUtil.*;
 
 @Service
-public class RegistrationService {
+public class RegisterService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public RegistrationService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public RegisterService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -40,7 +40,7 @@ public class RegistrationService {
 
         String encodedPassword = this.passwordEncoder.encode(password);
 
-        User user = new User(role, username, encodedPassword, email);
+        User user = new User(role, username.toLowerCase(), encodedPassword, email.toLowerCase());
 
         try {
             this.userRepository.save(user);
