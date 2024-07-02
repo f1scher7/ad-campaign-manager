@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Login</h3>
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
+                    </form>
+                    <div *ngIf="errorMess" class="alert alert-danger mt-3">
+                        {{ errorMess }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <a [routerLink]="['/auth/register']" class="btn btn-link">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
