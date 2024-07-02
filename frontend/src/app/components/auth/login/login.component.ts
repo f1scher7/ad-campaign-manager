@@ -25,9 +25,6 @@ export class LoginComponent {
                     localStorage.setItem('role', response.role);
                     localStorage.setItem('jwtToken', response.jwtToken);
 
-                    console.log(response.role);
-                    console.log(response.jwtToken);
-
                     if (response.role == 'ADMIN') {
                         this.router.navigate(['/adashboard']);
                     } else if (response.role == 'USER') {
