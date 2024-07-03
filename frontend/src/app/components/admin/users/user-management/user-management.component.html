@@ -1,0 +1,37 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container mt-4">
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-success" (click)="showAddUserModal()">
+            <i class="fas fa-user-plus"></i> Add user
+        </button>
+    </div>
+    <div class="row">
+        <div *ngFor="let user of users" class="col-12 mb-3">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Username: {{ user.username }}</h5>
+                        <p class="card-text"><strong>User ID:</strong> {{ user.id }}</p>
+                        <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                        <p class="card-text"><strong>Role:</strong> {{ user.role }}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary ms-1" (click)="editUser(user)">
+                            <i class="fa fa-user-edit"></i>
+                        </button>
+                        <button class="btn btn-danger ms-1" (click)="deleteUser(user)" >
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-user-edit-modal
+        [isVisible]="isModalVisible"
+        [user]="selectedUser"
+        (closeModal)="onModalClose()"
+        (saveUser)="onSaveUser($event)">
+</app-user-edit-modal>
