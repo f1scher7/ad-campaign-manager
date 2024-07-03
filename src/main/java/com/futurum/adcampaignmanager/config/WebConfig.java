@@ -17,12 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
                 corsRegistry.addMapping("/api/auth/**")
                         .allowedOrigins("http://localhost:4200")
                         .allowedMethods("POST");
-                corsRegistry.addMapping("/api/campaigns/**")
+                corsRegistry.addMapping("/api/**")
                         .allowedOrigins("http://localhost:4200")
-                        .allowedMethods("GET", "POST");
-                corsRegistry.addMapping("/api/users/**")
-                        .allowedOrigins("http://localhost:4200")
-                        .allowedMethods("GET", "POST");
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         };
     }
