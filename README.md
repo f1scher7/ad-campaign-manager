@@ -1,6 +1,8 @@
 # Ad Campaign Manager
 
-The Ad Campaign Manager was created using Spring Boot and Angular. It is a web application that allows administrators to manage marketing campaigns and users.
+The Ad Campaign Manager was created using Spring Boot and Angular. It is a CRUD application that allows administrators to manage marketing campaigns and users.
+
+![AdCampaignManager](https://github.com/f1scher7/ad-campaign-manager/assets/115926717/be7de1e5-fc17-4952-9026-4a43fe8cadd5)
 
 ## Technologies
 
