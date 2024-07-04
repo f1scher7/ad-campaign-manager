@@ -36,14 +36,15 @@ public class UserService {
     }
 
     public User updateUser(Long id, User userDetails) throws UserAlreadyExistsException {
-        Optional<User> optionalUser = this.userRepository.findById(id);
+        Optional<User> optionalUser = userRepository.findById(id);
         if (!optionalUser.isPresent()) {
             throw new UsernameNotFoundException("User not found with id: " + id);
         }
 
         User user = optionalUser.get();
 
-        if ((!user.getUsername().equals(userDetails.getUsername()) && this.userRepository.existsByUsername(userDetails.getUsername().toLowerCase())) || this.userRepository.existsByEmail(userDetails.getEmail().toLowerCase())) {
+        if (userRepository.existsByUsernameAndIdNot(userDetails.getUsername().toLowerCase(), id) ||
+                userRepository.existsByEmailAndIdNot(userDetails.getEmail().toLowerCase(), id)) {
             throw new UserAlreadyExistsException();
         }
 
@@ -51,7 +52,7 @@ public class UserService {
         user.setRole(userDetails.getRole());
         user.setEmail(userDetails.getEmail());
 
-        return this.userRepository.save(user);
+        return userRepository.save(user);
     }
 
 
