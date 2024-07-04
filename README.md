@@ -22,10 +22,12 @@ The Ad Campaign Manager was created using Spring Boot and Angular. It is a CRUD 
 - JWT
 - Maven
 - Docker Image
+- nginx
 - AWS EC2
 - H2 (data base)
 - Spring Data JPA
 - Hibernate
+- Unit tests
   
 ## Local testing
 
