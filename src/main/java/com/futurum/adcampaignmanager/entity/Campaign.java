@@ -17,7 +17,7 @@ public class Campaign {
     private User user;
     @Column(unique = true)
     private String campaignName;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> keywords;
     private BigDecimal bidAmount;
     private BigDecimal campaignFund;
