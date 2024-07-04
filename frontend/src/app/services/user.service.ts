@@ -10,11 +10,11 @@ import { RoleEnum } from "../enums/role.enum";
 })
 export class UserService {
 
-    baseUrl: string = 'http://localhost:8080';
+    baseUrl: string = 'http://localhost:8080/api/users';
     constructor(private http: HttpClient) { }
 
     getAllUsers(): Observable<UserModel[]> {
-        return this.http.get<UserModel[]>(this.baseUrl + '/api/users/all').pipe(
+        return this.http.get<UserModel[]>(this.baseUrl + '/all').pipe(
             map(users => {
                 return users.map(user => ({
                     id: user.id,
@@ -28,17 +28,17 @@ export class UserService {
     }
 
     createUser(user: UserModel): Observable<UserModel> {
-        return this.http.post<UserModel>(`${this.baseUrl}/api/users/create-user`, user, {
+        return this.http.post<UserModel>(`${this.baseUrl}/create-user`, user, {
             headers: { 'Content-Type': 'application/json' }
         });
     }
 
     updateUser(user: UserModel): Observable<UserModel> {
-        return this.http.put<UserModel>(`${this.baseUrl}/api/users/update-user-by-id/${user.id}`, user);
+        return this.http.put<UserModel>(`${this.baseUrl}/update-user-by-id/${user.id}`, user);
     }
 
     deleteUser(user: UserModel): Observable<void> {
-        return this.http.delete<void>(`${this.baseUrl}/api/users/delete-user-by-id/${user.id}`);
+        return this.http.delete<void>(`${this.baseUrl}/delete-user-by-id/${user.id}`);
     }
 
     private mapRole(role: string): RoleEnum {

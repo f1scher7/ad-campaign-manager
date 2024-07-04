@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {NgClass, NgIf, NgStyle} from "@angular/common";
-import {UserModel} from "../../../../models/user.model";
-import {RoleEnum} from "../../../../enums/role.enum";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { NgClass, NgIf, NgStyle } from "@angular/common";
+import { UserModel } from "../../../../models/user.model";
+import { RoleEnum } from "../../../../enums/role.enum";
 
 @Component({
   selector: 'app-user-edit-modal',
