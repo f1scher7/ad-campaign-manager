@@ -1,5 +1,7 @@
 # Ad Campaign Manager
 
+Link for live app: (http://ec2-35-159-110-112.eu-central-1.compute.amazonaws.com)
+
 The Ad Campaign Manager was created using Spring Boot and Angular. It is a CRUD application that allows administrators to manage marketing campaigns and users.
 
 ![AdCampaignManager](https://github.com/f1scher7/ad-campaign-manager/assets/115926717/be7de1e5-fc17-4952-9026-4a43fe8cadd5)
