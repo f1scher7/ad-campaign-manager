@@ -29,8 +29,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/auth/**", "/h2-console/**").permitAll()
-                        .requestMatchers("/api/users/**", "/api/campaigns/**").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/**").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_USER") //tymczasowe ustawienie
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
