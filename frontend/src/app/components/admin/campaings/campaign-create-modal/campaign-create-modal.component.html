@@ -1,0 +1,50 @@
+<div *ngIf="isVisible" class="modal show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ campaign.id != 0 ? 'Update Campaign' : 'Add Campaign' }}</h5>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSave()">
+                    <div class="form-group">
+                        <label for="campaignName">Campaign Name</label>
+                        <input type="text" class="form-control" id="campaignName" [(ngModel)]="campaign.campaignName" name="campaignName" [readonly]="campaign.id !== 0">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">User Username</label>
+                        <input type="text" class="form-control" id="username" [(ngModel)]="campaign.user.username" name="username" [readonly]="campaign.id !== 0">
+                    </div>
+                    <div class="form-group">
+                        <label for="keywords">Keywords</label>
+                        <input type="text" class="form-control" id="keywords" [(ngModel)]="keywordsInput" name="keywords" placeholder="Enter keywords separated by commas">
+                    </div>
+                    <div class="form-group">
+                        <label for="bidAmount">Bid Amount</label>
+                        <input type="number" class="form-control" id="bidAmount" [(ngModel)]="campaign.bidAmount" name="bidAmount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="campaignFund">Campaign Fund</label>
+                        <input type="number" class="form-control" id="campaignFund" [(ngModel)]="campaign.campaignFund" name="campaignFund" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="campaignStatus">Campaign Status</label>
+                        <select class="form-control" id="campaignStatus" [(ngModel)]="campaign.campaignStatus" name="campaignStatus">
+                            <option [ngValue]="true">Active</option>
+                            <option [ngValue]="false">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="town">Town</label>
+                        <input type="text" class="form-control" id="town" [(ngModel)]="campaign.town" name="town" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="radius">Radius</label>
+                        <input type="number" class="form-control" id="radius" [(ngModel)]="campaign.radius" name="radius" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary ms-1 mt-1">{{ campaign.id != 0 ? 'Update' : 'Save' }}</button>
+                    <button type="button" class="btn btn-secondary ms-1 mt-1" (click)="onClose()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

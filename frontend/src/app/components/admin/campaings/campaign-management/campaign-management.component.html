@@ -1,0 +1,42 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container mt-4">
+    <h3 class="text-center">Campaign manager</h3>
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-success" (click)="showAddCampaignModal()">
+            <i class="fas fa-plus"></i> Add Campaign
+        </button>
+    </div>
+    <div class="row">
+        <div *ngFor="let campaign of campaigns" class="col-12 mb-3">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Campaign Name: {{ campaign.campaignName }}</h5>
+                        <p class="card-text"><strong>Campaign ID:</strong> {{ campaign.id }}</p>
+                        <p class="card-text"><strong>User:</strong> {{ campaign.user.username }}</p>
+                        <p class="card-text"><strong>Keywords:</strong> {{ campaign.keywords.join(', ') }}</p>
+                        <p class="card-text"><strong>Town:</strong> {{ campaign.town }}</p>
+                        <p class="card-text"><strong>Radius:</strong> {{ campaign.radius }}</p>
+                        <p class="card-text"><strong>Status:</strong> {{ campaign.campaignStatus ? 'Active' : 'Inactive' }}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary ms-1" (click)="showEditCampaignModal(campaign)">
+                            <i class="fa fa-user-edit"></i>
+                        </button>
+                        <button class="btn btn-danger ms-1" (click)="deleteCampaign(campaign)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-campaign-create-modal
+    [isVisible]="isModalVisible"
+    [campaign]="selectedCampaign"
+    [errors]="errors"
+    (closeModal)="onModalClose()"
+    (saveCampaign)="onSaveCampaign($event)">
+</app-campaign-create-modal>
