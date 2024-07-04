@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.futurum.adcampaignmanager.enums.Role.USER;
-
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
@@ -22,6 +20,10 @@ public interface UserRepository extends JpaRepository<User,Long> {
     boolean existsByUsername(String username);
 
     boolean existsByEmail(String email);
+
+    boolean existsByUsernameAndIdNot(String username, Long id);
+
+    boolean existsByEmailAndIdNot(String email, Long id);
 
     @Query("SELECT COUNT(u) FROM User u WHERE u.role = 'USER'")
     long countUsersWithRoleUser();
