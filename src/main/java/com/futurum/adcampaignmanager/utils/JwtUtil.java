@@ -17,7 +17,7 @@ import javax.crypto.SecretKey;
 @Component
 public final class JwtUtil {
 
-    private static final String JWT_SECRET_KEY = "Lvr9Qmc9yYgjf/7XKKzoLLOT7ZzvItWpas8oUV1Re1o=";
+    private static final String JWT_SECRET_KEY = "Lvr9Qmc9yYgjf/7XKKzoLLOT7ZzvItWpas8oUV1Re1o="; // wiem, że to ma być zmienna środowiskowa :)
     private static final long JWT_EXPIRATION_TIME = 864_000_000;
 
     private static SecretKey getSigningKey() {
