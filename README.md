@@ -17,11 +17,11 @@ The Ad Campaign Manager was created using Spring Boot and Angular. It is a CRUD 
 - Font Awesome
 
 ### Back-End
-- Java
-- Spring Boot
-- Spring Web MVC
-- Spring Security
-- JWT
+- Java 21
+- Spring Boot 3.3.1
+- Spring Web MVC 
+- Spring Security 6.3.1
+- JWT 0.12.6
 - Maven
 - Docker Image
 - nginx
